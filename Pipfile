@@ -14,6 +14,8 @@ circuitpython-hmac = "==0.2.1"
 flynn = {ref = "circuitpython", git = "https://github.com/p610/flynn"}
 ecdsa = "*"
 
+[scripts]
+test = "pytest"
 
 [dev-packages]
 circuitpython-stubs = "*"
