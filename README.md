@@ -1,4 +1,5 @@
 # CircuitKey [Work in Progress Repo]
+![alt build status](https://github.com/p610/circuitkey-wip/actions/workflows/python-app.yml/badge.svg)
 
 <p align="center"><img src="logo.png" alt="logo"/></p>
 
