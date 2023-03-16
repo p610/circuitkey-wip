@@ -1,0 +1,12 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "deploy",
+            "type": "shell",
+            "command": "rm -rf /media/dev/CIRCUITPY/{circlefido,*.py} && cp -r boot.py main.py /media/dev/CIRCUITPY && mkdir -p /media/dev/CIRCUITPY/circlefido && cp -r circlefido/*.py /media/dev/CIRCUITPY/circlefido",
+        }
+    ]
+}
