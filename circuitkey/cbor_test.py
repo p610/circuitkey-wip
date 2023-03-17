@@ -23,6 +23,42 @@ async def test_cbor_process_ok():
 
 
 @pytest.mark.asyncio
+async def test_cbor_process_invalid_command():
+    command = CtapCommand(None, None, struct.pack("<B", 0xFF))
+
+    response = await cbor.process(command)
+
+    assert response == struct.pack("<B", Error.INVALID_COMMAND)
+
+
+@pytest.mark.asyncio
+async def test_cbor_process_invalid_cbor():
+    invalid_cbor = flynn.dumps({"a": "b", "c": "d"})[:7]
+    cbor_payload = CborCmd.CLIENT_PIN.to_bytes(1, "big") + invalid_cbor
+    command = CtapCommand(None, None, cbor_payload)
+
+    response = await cbor.process(command)
+
+    assert response == struct.pack("<B", Error.INVALID_CBOR)
+
+
+@pytest.mark.asyncio
+async def test_cbor_process_abort(mocker: pytest_mock.MockFixture):
+    mocker.patch(
+        "circuitkey.cbor.authenticator_make_credential",
+        side_effect=asyncio.CancelledError(),
+    )
+
+    command = CtapCommand(
+        None, None, struct.pack("<B", CborCmd.MAKE_CREDENTIAL) + flynn.dumps({})
+    )
+
+    response = await cbor.process(command)
+
+    assert response == struct.pack("<B", Error.KEEPALIVE_CANCEL)
+
+
+@pytest.mark.asyncio
 async def test_reset_if_device_uptime_more_than_10_s(
     mocker: pytest_mock.MockFixture,
 ):
