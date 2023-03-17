@@ -106,27 +106,6 @@ async def test_should_fail_set_new_pin_if_pin_lenght_incorrect(
 
 
 @pytest.mark.asyncio
-async def ignore_test_should_change_pin(pin_protocol_v1: PinProtocolV1): #TODO fixme
-    pin_protocol_v1._pin = PIN_AUTH
-    pin_protocol_v1._retry_count = 6
-    pin_protocol_v1._pin_mismatch_counter = 2
-    pin_protocol_v1._key_agreement_key = to_ec_key(AUTHENTICATOR_KEY)
-
-    new_pin = "5678".encode("UTF-8")
-    shared_secret = crypto.ec_shared_secret(
-        to_ec_key(PLATFORM_KEY)[1], to_ec_key(AUTHENTICATOR_KEY)[0]
-    )
-    new_enc_pin = crypto.aes256_cbc_encrypt(shared_secret, new_pin, 64)
-
-    await pin_protocol_v1.set_pin(
-        new_enc_pin, PIN_AUTH, platform_bG=to_ec_key(PLATFORM_KEY)[0]
-    )
-
-    assert pin_protocol_v1._pin == 1
-    assert pin_protocol_v1._retry_count == 8
-
-
-@pytest.mark.asyncio
 async def test_should_verify_pin(pin_protocol_v1: PinProtocolV1):
     pin_protocol_v1._pin = PIN_AUTH
     pin_protocol_v1._retry_count = 6
