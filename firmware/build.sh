@@ -8,7 +8,7 @@ echo '== Container ID: ' ${container_id}
 
 function cleanup() {
     echo "== Cleaning up... Removing container ${container_id}"
-    docker rm ${container_id} -f
+    docker rm ${container_id} -f || echo "Failed to remove container ${container_id}. It might have been removed already."
 }
 trap cleanup EXIT INT
 

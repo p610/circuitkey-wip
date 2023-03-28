@@ -26,17 +26,19 @@ RUN apt-get update && apt-get install -y \
 RUN cd circuitpython \
     && pip3 install -r requirements-dev.txt
 
-ARG BOARD=waveshare_rp2040_zero
-
-ENV USER_C_MODULES="/circuitpython/ports/raspberrypi/boards/${BOARD}/cmodules"
-ENV BOARD="${BOARD}"
-
 RUN cd circuitpython \
     && make -C mpy-cross 
 
-RUN mkdir /circuitpython/ports/raspberrypi/boards/${BOARD}/cmodules/ecdsa -p
-ADD lib /circuitpython/ports/raspberrypi/boards/${BOARD}/cmodules/ecdsa
+ADD ./lib /circuitpython/usercmodule
 
-RUN cd /circuitpython \
-    && make -j8 -C ports/raspberrypi
+# not tested with other boards
+ENV BOARD="waveshare_rp2040_zero"
 
+ENV PLATFORM="raspberrypi"
+
+ENV BOARD_CFG="/circuitpython/ports/${PLATFORM}/boards/${BOARD}/mpconfigboard.mk"
+
+RUN echo "CIRCUITPY_SSL_MBEDTLS = 1" >> /circuitpython/ports/${PLATFORM}/boards/${BOARD}/mpconfigboard.mk 
+
+RUN cd /circuitpython/ports/${PLATFORM} \
+    && make BOARD=${BOARD} USER_C_MODULES=/circuitpython/usercmodule
