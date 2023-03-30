@@ -1,9 +1,9 @@
-import typing
 import hmac
-import adafruit_hashlib as hashlib
-
+import typing
 from collections import namedtuple
-from ecdsa import SigningKey, VerifyingKey, NIST256p
+
+import adafruit_hashlib as hashlib
+from ecdsa import NIST256p, SigningKey, VerifyingKey
 from ecdsa.ecdh import ECDH
 from ecdsa.ellipticcurve import Point
 
@@ -29,9 +29,9 @@ def aes256_cbc_encrypt(key: bytes, data: bytes, buffer_size: int) -> bytes:
         # fallback to pure python implementation
         # if aesio is not available (e.g. unittests)
 
-        from cryptography.hazmat.primitives.ciphers.algorithms import AES
-        from cryptography.hazmat.primitives.ciphers import Cipher, modes
         from cryptography.hazmat.backends import default_backend
+        from cryptography.hazmat.primitives.ciphers import Cipher, modes
+        from cryptography.hazmat.primitives.ciphers.algorithms import AES
 
         cipher = Cipher(AES(key), modes.CBC(b"\x00" * 16), backend=default_backend())
         encryptor = cipher.encryptor()
@@ -50,9 +50,9 @@ def aes256_cbc_decrypt(key: bytes, data: bytes) -> bytes:
     except ModuleNotFoundError:
         # fallback to pure python implementation
         # if aesio is not available (e.g. unittests)
-        from cryptography.hazmat.primitives.ciphers.algorithms import AES
-        from cryptography.hazmat.primitives.ciphers import Cipher, modes
         from cryptography.hazmat.backends import default_backend
+        from cryptography.hazmat.primitives.ciphers import Cipher, modes
+        from cryptography.hazmat.primitives.ciphers.algorithms import AES
 
         cipher = Cipher(AES(key), modes.CBC(b"\x00" * 16), backend=default_backend())
         decryptor = cipher.decryptor()

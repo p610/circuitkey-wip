@@ -1,8 +1,9 @@
-import pytest
-from unittest.mock import MagicMock
 import sys
-from circuitkey.error import CtapError
+from unittest.mock import MagicMock
 
+import pytest
+
+from circuitkey.error import CtapError
 from circuitkey.schema import Error
 
 sys.modules["usb_hid"] = MagicMock()

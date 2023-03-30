@@ -1,15 +1,12 @@
 import asyncio
 from typing import Awaitable
-from circuitkey import cbor, channel, info, util, hid, ui
-from circuitkey.error import CtapError
+
 from adafruit_logging import getLogger
-from circuitkey.schema import (
-    CTAPHID_BROADCAST_CID,
-    Error,
-    CtaphidCmd,
-    Error,
-    KeepaliveStatusCode,
-)
+
+from circuitkey import cbor, channel, hid, info, ui, util
+from circuitkey.error import CtapError
+from circuitkey.schema import (CTAPHID_BROADCAST_CID, CtaphidCmd, Error,
+                               KeepaliveStatusCode)
 
 log = getLogger(__name__)
 

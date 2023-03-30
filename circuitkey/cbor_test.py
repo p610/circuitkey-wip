@@ -2,10 +2,12 @@ import asyncio
 import struct
 import sys
 from unittest.mock import MagicMock
+
 import flynn
 import pytest
 import pytest_mock
-from circuitkey.schema import CborCmd, CtapCommand, PinSubCmd, Error
+
+from circuitkey.schema import CborCmd, CtapCommand, Error, PinSubCmd
 
 sys.modules["countio"] = MagicMock()
 

@@ -1,12 +1,11 @@
 import asyncio
 from typing import Optional, Tuple
+
 import usb_hid
-
 from adafruit_logging import getLogger
+
 from circuitkey.error import AbortError, CtapError
-
 from circuitkey.schema import CtapCommand, CtaphidCmd, Error
-
 
 log = getLogger(__name__)
 
