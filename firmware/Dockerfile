@@ -2,7 +2,8 @@ FROM debian:11-slim
 
 ARG VERSION=8.0.3
 
-RUN apt-get update && apt-get install -y git build-essential wget
+RUN apt-get update \
+    && apt-get install -y git build-essential wget
 
 RUN git clone https://github.com/adafruit/circuitpython.git \
     && cd /circuitpython \

@@ -1,0 +1,20 @@
+{
+  "name": "emulator",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "scripts": {
+    "test": "eslint **/*.ts &&./create-fat12-fs.sh && ts-node test.ts"
+  },
+  "private": true,
+  "license": "MIT",
+  "dependencies": {
+    "rp2040js": "^0.17.12",
+    "uf2": "^2.0.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.57.0",
+    "eslint": "^8.36.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.2"
+  }
+}
