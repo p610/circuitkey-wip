@@ -22,10 +22,17 @@ The FIDO authenticator works by creating a private and public key pair, where th
 1. [How Fido Works](https://fidoalliance.org/how-fido-works/)
 2. [Fido 2.0 Protocol](https://fidoalliance.org/specs/fido-v2.0-ps-20190130/fido-client-to-authenticator-protocol-v2.0-ps-20190130.html)
 
+### Project structure
+
+📁 circuitpython - implementation
+📁 firmware - build script for customized version of circuitpython with additional ***crypto*** module
+📁 emulator - used to emulate rp2040 using awesome rp2040js library
+📁 tests - used to run a suite of test that proves that implementation works correctly
+
 ### Roadmap
 
-1. Improve code quality and fix compatibility issues with CircuitPython.
-2. Add support for Elliptic Curve Cryptography (ECC) using mbedtls library - via C python extension (?)
-3. Develop an emulator/simulator for testing and debugging.
-4. Add Bluetooth support.
-5. Migrate to a new repository.
+1. ☐ Improve code quality and fix compatibility issues with CircuitPython.
+2. ☑ Add support for Elliptic Curve Cryptography (ECC) using mbedtls library - via C python extension (?)
+3. ☑ Develop an emulator/simulator for testing and debugging.
+4. ☐ Add Bluetooth support.
+5. ☐ Migrate to a new repository.
