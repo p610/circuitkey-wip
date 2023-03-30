@@ -1,16 +1,13 @@
 import asyncio
 import random
+import sys
 from unittest.mock import AsyncMock, MagicMock
+
 import pytest
 import pytest_mock
-import sys
 
-from circuitkey.schema import (
-    CTAPHID_BROADCAST_CID,
-    Error,
-    CtaphidCmd,
-    KeepaliveStatusCode,
-)
+from circuitkey.schema import (CTAPHID_BROADCAST_CID, CtaphidCmd, Error,
+                               KeepaliveStatusCode)
 
 sys.modules["usb_hid"] = MagicMock()
 

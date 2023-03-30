@@ -1,9 +1,10 @@
 # User interface. At the moement only one LED and button are used.
 
-from adafruit_logging import getLogger
-import digitalio
 import asyncio
+
 import async_button
+import digitalio
+from adafruit_logging import getLogger
 
 from circuitkey.util import wait_until_first_complete
 

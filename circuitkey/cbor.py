@@ -2,26 +2,24 @@ import asyncio
 import inspect
 import struct
 import time
+
 import flynn
 import flynn.decoder as decoder
-from circuitkey import pin
-from circuitkey.error import CborError
+from adafruit_logging import getLogger
 
 import circuitkey.info as info
-import circuitkey.ui as ui
 import circuitkey.storage as storage
-
+import circuitkey.ui as ui
+from circuitkey import pin
+from circuitkey.error import CborError
 from circuitkey.schema import (
     CBOR_SUCCCESS_CODE,
     CborCmd,
     CtapCommand,
-    PinSubCmd,
     Error,
+    PinSubCmd,
     cbor_pin_response,
 )
-
-from adafruit_logging import getLogger
-
 
 log = getLogger(__name__)
 

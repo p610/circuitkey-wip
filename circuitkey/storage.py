@@ -1,6 +1,7 @@
 import json
-import adafruit_logging as logging
 import os
+
+import adafruit_logging as logging
 
 log = logging.getLogger(__name__)
 

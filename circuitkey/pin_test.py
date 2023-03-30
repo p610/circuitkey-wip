@@ -2,7 +2,7 @@ import ecdsa
 import pytest
 
 from circuitkey import crypto, storage
-from circuitkey.error import CborError, CtapError
+from circuitkey.error import CborError
 from circuitkey.pin import PinProtocolV1
 from circuitkey.schema import Error
 
@@ -106,7 +106,7 @@ async def test_should_fail_set_new_pin_if_pin_lenght_incorrect(
 
 
 @pytest.mark.asyncio
-async def ignore_test_should_change_pin(pin_protocol_v1: PinProtocolV1): #TODO fixme
+async def ignore_test_should_change_pin(pin_protocol_v1: PinProtocolV1):  # TODO fixme
     pin_protocol_v1._pin = PIN_AUTH
     pin_protocol_v1._retry_count = 6
     pin_protocol_v1._pin_mismatch_counter = 2

@@ -1,5 +1,4 @@
 from collections import namedtuple
-
 from enum import IntFlag, unique
 
 CtapCommand = namedtuple("CtapCommand", ["cid", "cmd", "payload"])

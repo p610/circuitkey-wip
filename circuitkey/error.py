@@ -1,4 +1,4 @@
-from circuitkey.schema import Error, Error
+from circuitkey.schema import Error
 
 
 class CtapError(Exception):

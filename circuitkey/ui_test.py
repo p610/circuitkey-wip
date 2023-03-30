@@ -1,8 +1,8 @@
 import asyncio
-import pytest
 import sys
-
 from unittest.mock import MagicMock
+
+import pytest
 from async_button import SimpleButton
 from pytest_mock import MockerFixture
 

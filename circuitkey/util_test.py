@@ -1,5 +1,7 @@
 import asyncio
+
 import pytest
+
 from circuitkey.util import wait_until_first_complete
 
 
