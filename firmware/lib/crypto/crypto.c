@@ -89,18 +89,18 @@ STATIC mp_obj_t crypto_shared_secret(mp_obj_t a_x, mp_obj_t a_y, mp_obj_t a_priv
     // generate shared secret
     unsigned char shared_secret[32];
 
-    // if ((mbedtls_ecdh_compute_shared(&ctx.grp, &ctx.z, &ctx.Q, &ctx.d, mbedtls_ctr_drbg_random, &ctr_drbg)) != 0)
-    // {
-    //     sharedsecret_cleanup(&ctx, &ctr_drbg, &entropy, "Cannot generate shared secret");
-    // }
+    if ((mbedtls_ecdh_compute_shared(&ctx.grp, &ctx.z, &ctx.Q, &ctx.d, mbedtls_ctr_drbg_random, &ctr_drbg)) != 0)
+    {
+        sharedsecret_cleanup(&ctx, &ctr_drbg, &entropy, "Cannot generate shared secret");
+    }
 
-    // // write shared secret to buffer and return it
-    // if ((mbedtls_mpi_write_binary(&ctx.z, shared_secret, 32)) != 0)
-    // {
-    //     sharedsecret_cleanup(&ctx, &ctr_drbg, &entropy, "Cannot write shared secret");
-    // }
+    // write shared secret to buffer and return it
+    if ((mbedtls_mpi_write_binary(&ctx.z, shared_secret, 32)) != 0)
+    {
+        sharedsecret_cleanup(&ctx, &ctr_drbg, &entropy, "Cannot write shared secret");
+    }
 
-    // sharedsecret_cleanup(&ctx, &ctr_drbg, &entropy, NULL);
+    sharedsecret_cleanup(&ctx, &ctr_drbg, &entropy, NULL);
 
     mp_obj_t shared_secret_bytes = mp_obj_new_bytes(shared_secret, 32);
 
