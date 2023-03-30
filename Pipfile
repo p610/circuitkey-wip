@@ -24,6 +24,9 @@ pytest-mock = "*"
 black = "*"
 pytest-asyncio = "*"
 cryptography = "*"
+requests = "*"
+pyfatfs = "*"
+fs = "*"
 
 [requires]
 python_version = "3.10"
