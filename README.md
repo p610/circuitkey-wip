@@ -25,8 +25,11 @@ The FIDO authenticator works by creating a private and public key pair, where th
 ### Project structure
 
 📁 circuitpython - implementation
+
 📁 firmware - build script for customized version of circuitpython with additional ***crypto*** module
+
 📁 emulator - used to emulate rp2040 using awesome rp2040js library
+
 📁 tests - used to run a suite of test that proves that implementation works correctly
 
 ### Roadmap
